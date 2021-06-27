@@ -1,16 +1,16 @@
 module.exports = function(app) {
  
-    const customers = require('../controller/account.controller.js');
+    const accounts = require('../controller/account.controller.js');
 
     const route = '/api/accountmgr';
  
-    app.post(route + '/register', customers.create);
+    app.post(route + '/register', accounts.create);
  
-    app.get(route, customers.findAll);
+    app.get(route, accounts.findAll);
  
-    app.get(route + '/:accountId', customers.findById);
+    app.get(route + '/:accountId', accounts.findById);
  
-    app.put(route + '/:accountId', customers.update);
+    app.put(route + '/:accountId', accounts.update);
  
-    app.delete(route + '/:accountId', customers.delete);
+    app.delete(route + '/:accountId', accounts.delete);
 }

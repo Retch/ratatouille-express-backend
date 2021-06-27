@@ -79,3 +79,20 @@ exports.delete = (req, res) => {
         })
         .catch(error => res.status(400).send(error));
 };
+
+exports.findMyCreated = (req, res) => {
+    Recipe.findAll({
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+    })
+        .then(recipes => {
+            let createdrecipes = [];
+            recipes.forEach(recipe => {
+                if (recipe.dataValues.creatorId === req.body.accountId) {
+                    createdrecipes.push(recipe);
+                }
+            })
+
+            res.send(createdrecipes);
+        })
+        .catch(error => res.status(400).send(error))
+}

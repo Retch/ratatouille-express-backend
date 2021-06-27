@@ -4,6 +4,7 @@ module.exports = function(app) {
 
     const route = '/api/accountmgr';
  
+    
     app.post(route + '/register', accounts.create);
  
     app.get(route, accounts.findAll);

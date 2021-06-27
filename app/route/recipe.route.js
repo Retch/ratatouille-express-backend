@@ -17,5 +17,5 @@ module.exports = function(app) {
 
     app.post(route + '/like', recipelike.togglelike);
 
-    app.get(route + '/myfavorites', recipelike.findMyFavorites);
+    app.post(route + '/myfavorites', recipelike.findMyFavorites);
 }

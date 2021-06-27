@@ -26,9 +26,31 @@ exports.findMyFavorites = (req, res) => {
     RecipeLike.findAll({
         attributes: { exclude: ["createdAt", "updatedAt"] }
     })
-        .then(recipes => {
-            console.log(recipes);
-            res.send.json(recipes);
+        .then(recipelikes => {
+            let userrecipeids = [];
+            recipelikes.forEach(recipe => {
+                //console.log(recipe.dataValues);
+                if (recipe.dataValues.accountId === req.body.accountId) {
+                    userrecipeids.push(recipe.dataValues.recipeId);
+                }
+            })
+
+            Recipe.findAll({
+                attributes: { exclude: ["createdAt", "updatedAt"] }
+            })
+                .then(recipes => {
+                    let userrecipes = [];
+                    recipes.forEach(recipe => {
+                        userrecipeids.forEach(recipeid => {
+                            if (recipe.dataValues.id === recipeid) {
+                                userrecipes.push(recipe);
+                            }
+                        })
+                    })
+
+                    res.send(userrecipes);
+                })
+                .catch(error => res.status(400).send(error))
         })
         .catch(error => res.status(400).send(error))
 };

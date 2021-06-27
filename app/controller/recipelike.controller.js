@@ -1,6 +1,5 @@
 const db = require('../config/db.config.js');
 const Recipe = db.recipes;
-const Customer = db.customers;
 const RecipeLike = db.recipelikes;
 
 exports.togglelike = (req, res) => {
@@ -21,4 +20,15 @@ exports.togglelike = (req, res) => {
         }
     })
     .catch(error => res.status(400).send(error))
+};
+
+exports.findMyFavorites = (req, res) => {
+    RecipeLike.findAll({
+        attributes: { exclude: ["createdAt", "updatedAt"] }
+    })
+        .then(recipes => {
+            console.log(recipes);
+            res.send.json(recipes);
+        })
+        .catch(error => res.status(400).send(error))
 };

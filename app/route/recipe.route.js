@@ -16,4 +16,6 @@ module.exports = function(app) {
     app.delete(route + '/:recipeId', recipes.delete);
 
     app.post(route + '/like', recipelike.togglelike);
+
+    app.get(route + '/myfavorites', recipelike.findMyFavorites);
 }

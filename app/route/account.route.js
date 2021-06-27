@@ -10,7 +10,7 @@ module.exports = function(app) {
  
     app.get(route + '/:accountId', accounts.findById);
  
-    app.put(route + '/:accountId', accounts.update);
+    app.post(route + '/newpw', accounts.newpassword);
  
     app.delete(route + '/:accountId', accounts.delete);
 }

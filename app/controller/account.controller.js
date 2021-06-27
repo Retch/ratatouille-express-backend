@@ -36,8 +36,8 @@ exports.findById = (req, res) => {
 			.catch(error => res.status(400).send(error));
 };
  
-exports.update = (req, res) => {
-	return Account.findById(req.params.accountId)
+exports.newpassword = (req, res) => {
+	return Account.findById(req.body.accountId)
 		.then(
 			account => {
 				if(!account){
@@ -46,8 +46,7 @@ exports.update = (req, res) => {
 					});
 				}
 				return account.update({
-										name: req.body.name,
-										age: req.body.age
+										password: req.body.password,
 									})
 									.then(() => res.status(200).json(account))
 									.catch((error) => res.status(400).send(error));

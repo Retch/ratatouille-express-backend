@@ -71,3 +71,15 @@ exports.delete = (req, res) => {
 					})
 					.catch(error => res.status(400).send(error));
 };
+
+exports.login = (req, res) => {
+	Account.findOne({ where: { email: req.body.email, password: req.body.password } }).then(account => {
+        if (account) {
+			res.status(200).json({accountId: account.dataValues.id});
+        }
+        else {
+            res.sendStatus(401);
+        }
+    })
+    .catch(error => res.status(400).send(error))
+};

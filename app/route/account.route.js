@@ -12,6 +12,8 @@ module.exports = function(app) {
     app.get(route + '/:accountId', accounts.findById);
  
     app.post(route + '/newpw', accounts.newpassword);
+
+    app.post(route + '/login', accounts.login);
  
     app.delete(route + '/:accountId', accounts.delete);
 }

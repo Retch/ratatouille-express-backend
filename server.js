@@ -11,7 +11,7 @@ app.use(function(req, res, next) {
 
 const db = require('./app/config/db.config.js');
 
-const expressport = 8000;
+const expressport = 3002;
 
 // force: true will drop the table if it already exists
 const resync = false;

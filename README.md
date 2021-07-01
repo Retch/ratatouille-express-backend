@@ -1,4 +1,4 @@
-# Express Backend for fh-erfurt/Ratatouille
+## Express Backend for fh-erfurt/Ratatouille
 
 ### Run with Node installed
 
@@ -10,8 +10,8 @@
 
 ### Run the Docker image
 
-1. <code>docker pull ghcr.io/retch/ratatouille-express-backend:main</code>
-2. Set credentials as args as shown:<br><code>docker run -e "HOST=10.147.17.100" -e "PORT=3306" -e "USER=admin" -e "PASS=secret" -e "DB=projectdb" -e "FORCERESYNC=false" -p 1001:8000</code>
+1. Pull latest Docker image: <code>docker pull ghcr.io/retch/ratatouille-express-backend:main</code>
+2. Set credentials as args like this: <code>docker run -e "HOST=10.147.17.100" -e "PORT=3306" -e "USER=admin" -e "PASS=secret" -e "DB=projectdb" -e "FORCERESYNC=false" -p 1001:8000</code>
 
 ### Help
 
@@ -19,3 +19,42 @@
 
 Default: false
 Drops database and creates new database
+
+### Docker example usage with compose
+
+<code>
+---
+version: "2.1"
+services:
+  mariadb:
+    image: ghcr.io/linuxserver/mariadb:alpine
+    container_name: ratatouille-mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=rootpw
+      - TZ=Europe/Berlin
+      - MYSQL_DATABASE=ratatouille
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=secretpw
+    volumes:
+      - /home/user/data/ratatouille:/config
+    networks:
+      - ratatouille-network
+    restart: unless-stopped
+  express:
+    image: ghcr.io/retch/ratatouille-express-backend:main
+    container_name: ratatouille-express
+    environment:
+      - "HOST=ratatouille-mariadb"
+      - "PORT=3306"
+      - "USER=admin"
+      - "PASS=secretpw"
+      - "DB=ratatouille"
+      - "FORCERESYNC=false"
+    networks:
+      - ratatouille-network
+    ports:
+      - 1234:8000
+    restart: unless-stopped
+</code>

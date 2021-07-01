@@ -1,7 +1,7 @@
 const env = {
   database: 'ratatouille',
   username: 'admin',
-  password: 'pass',
+  password: 'secretpw',
   host: 'localhost',
   port: 3306,
   dialect: 'mysql',

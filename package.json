@@ -9,8 +9,8 @@
   "keywords": [
     "Node.js-Express-SequelizeJS-MariaDB"
   ],
-  "author": "Grokonez.com",
-  "license": "ISC",
+  "author": "Retch",
+  "license": "GPLv3",
   "dependencies": {
     "express": "^4.16.3",
     "mysql2": "^1.5.3",

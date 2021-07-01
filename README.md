@@ -22,7 +22,7 @@ Drops database and creates new database
 
 ### Docker example usage with compose
 
-<code>
+```yaml
 ---
 version: "2.1"
 services:
@@ -57,4 +57,4 @@ services:
     ports:
       - 1234:8000
     restart: unless-stopped
-</code>
+```

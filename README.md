@@ -17,7 +17,7 @@
 
 #### forceresync
 
-Default: false
+Default: false<br>
 Drops database and creates new database
 
 ### Docker example usage with compose

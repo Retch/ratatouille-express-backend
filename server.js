@@ -14,11 +14,23 @@ const db = require('./app/config/db.config.js');
 const expressport = 8000;
 
 // force: true will drop the table if it already exists
-const resync = false;
-if (resync) {
+let forceresync = false;
+
+if (process.env.FORCERESYNC === "true") {
+  forceresync = true;
+}
+if (forceresync) {
   db.sequelize.sync({force: true}).then(() => {
-    console.log('Drop and Resync with { force: true }');
+    console.log('Drop table and resync');
   });  
+}
+else {
+  db.sequelize.sync({
+    force: false,
+    alter: true
+  }).then(() => {
+    console.log('Altering table without resync');
+  });
 }
 
 require('./app/route/account.route.js')(app);

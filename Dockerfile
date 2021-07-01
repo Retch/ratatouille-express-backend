@@ -6,6 +6,13 @@ RUN npm install
 
 EXPOSE 8000
 
+ARG HOST
+ARG PORT
+ARG USER
+ARG PASS
+ARG DB
+ARG FORCERESYNC
+
 CMD [ "node", "server.js" ]
 
 # Metadata

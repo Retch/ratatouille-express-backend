@@ -1,6 +1,6 @@
 ## Express Backend for fh-erfurt/Ratatouille
 
-[![Docker](https://github.com/Retch/ratatouille-express-backend/actions/workflows/docker-publish.yml/badge.svg?branch=main)](https://github.com/Retch/ratatouille-express-backend/actions/workflows/docker-publish.yml)
+[![Docker](https://github.com/Retch/ratatouille-express-backend/actions/workflows/docker-publish.yml/badge.svg?branch=main)](https://github.com/Retch/ratatouille-express-backend/pkgs/container/ratatouille-express-backend)
 
 ### Run with Node installed
 

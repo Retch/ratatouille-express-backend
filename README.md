@@ -1,5 +1,7 @@
 ## Express Backend for fh-erfurt/Ratatouille
 
+[![Docker](https://github.com/Retch/ratatouille-express-backend/actions/workflows/docker-publish.yml/badge.svg?branch=main)](https://github.com/Retch/ratatouille-express-backend/actions/workflows/docker-publish.yml)
+
 ### Run with Node installed
 
 1. Set up mariadb/mysql Database

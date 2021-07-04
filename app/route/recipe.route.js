@@ -10,15 +10,13 @@ module.exports = function(app) {
 
     app.get(route, recipes.findAll);
 
-    //app.get(route + '/:recipeId', recipes.findById);
-
-    //app.put(route + '/:recipeId', recipes.update);
-
-    //app.delete(route + '/:recipeId', recipes.delete);
-
     app.post(route + '/like', recipelike.togglelike);
 
     app.post(route + '/myfavorites', recipelike.findMyFavorites);
 
     app.post(route + '/mycreated', recipes.findMyCreated);
+
+    app.put(route + '/mycreated/edit/:recipeId', recipes.editMyCreatedRecipe);
+
+    app.put(route + '/mycreated/delete/:recipeId', recipes.delete);
 }

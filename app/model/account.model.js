@@ -8,10 +8,19 @@ module.exports = (sequelize, Sequelize) => {
         },
 		email: {
 			type: Sequelize.STRING(300),
-			allowNull: true,
+			allowNull: false,
 			unique: true
 		},
-		password: Sequelize.STRING(512)
+		password: {
+			type: Sequelize.STRING(512),
+			allowNull: false,
+			unique: false
+		},
+		pictureurl: {
+			type: Sequelize.STRING(512),
+			allowNull: true,
+			unique: false
+		},
 	});
 
 	return Account;

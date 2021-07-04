@@ -4,7 +4,8 @@ const Account = db.accounts;
 exports.create = (req, res) => {	
 	Account.create({  
 			email: req.body.email,
-			password: req.body.password
+			password: req.body.password,
+			pictureurl: req.body.pictureurl
 		})
 		.then(account => {		
 			res.json(account);

@@ -3,7 +3,7 @@ const Account = db.accounts;
 
 exports.create = (req, res) => {	
 	Account.create({  
-			email: req.body.email,
+			email: req.body.email.toLowerCase(),
 			password: req.body.password,
 			pictureurl: req.body.pictureurl
 		})
@@ -15,7 +15,7 @@ exports.create = (req, res) => {
  
 exports.findAll = (req, res) => {
 	Account.findAll({
-			attributes: { exclude: ["createdAt", "updatedAt"] }
+			attributes: { exclude: ["createdAt", "updatedAt", "password"] }
 		})
 		.then(accounts => {
 			res.json(accounts);
@@ -25,7 +25,7 @@ exports.findAll = (req, res) => {
 
 exports.findById = (req, res) => {	
 	Account.findById(req.params.accountId,
-				{attributes: { exclude: ["createdAt", "updatedAt"] }}
+				{attributes: { exclude: ["createdAt", "updatedAt", "password"] }}
 			)
 			.then(account => {
 					if (!account){

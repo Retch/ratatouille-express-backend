@@ -13,7 +13,6 @@ exports.create = (req, res) => {
         creatorId: req.body.creatorId
     })
         .then(customer => {
-            // Send created customer to client
             res.json(customer);
         })
         .catch(error => res.status(400).send(error))

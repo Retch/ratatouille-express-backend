@@ -18,7 +18,7 @@ module.exports = function(app) {
 
     app.post(route + '/mycreated', recipes.findMyCreated);
 
-    app.put(route + '/mycreated/edit/:recipeId', recipes.editMyCreatedRecipe);
+    app.post(route + '/mycreated/edit/:recipeId', recipes.editMyCreatedRecipe);
 
-    app.put(route + '/mycreated/delete/:recipeId', recipes.delete);
+    app.delete(route + '/mycreated/delete/:recipeId', recipes.delete);
 }

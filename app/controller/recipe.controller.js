@@ -20,7 +20,7 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     Recipe.findAll({
-        attributes: { exclude: ["createdAt", "updatedAt"] }
+        attributes: { exclude: ["updatedAt"] }
     })
         .then(recipes => {
             res.json(recipes);
@@ -30,7 +30,7 @@ exports.findAll = (req, res) => {
 
 exports.findById = (req, res) => {
     Recipe.findById(req.params.recipeId,
-        {attributes: { exclude: ["createdAt", "updatedAt"] }}
+        {attributes: { exclude: ["updatedAt"] }}
     )
         .then(recipe => {
                 if (!recipe){
@@ -100,7 +100,7 @@ exports.delete = (req, res) => {
 
 exports.findMyCreated = (req, res) => {
     Recipe.findAll({
-        attributes: { exclude: ["createdAt", "updatedAt"] }
+        attributes: { exclude: ["updatedAt"] }
     })
         .then(recipes => {
             let createdrecipes = [];

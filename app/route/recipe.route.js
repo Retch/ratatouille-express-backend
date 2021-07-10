@@ -9,6 +9,8 @@ module.exports = function(app) {
     app.post(route + '/create', recipes .create);
 
     app.get(route, recipes.findAll);
+    
+    app.get(route + ':recipeId', recipes.findById);
 
     app.post(route + '/like', recipelike.togglelike);
 
